@@ -1,0 +1,14 @@
+{
+  "name": "thecapitals",
+  "version": "1.0.0",
+  "description": "This app an API application built for theCapitals",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Suraj Prakash Gautam",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
