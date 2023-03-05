@@ -1,0 +1,42 @@
+# dependencies
+/node_modules
+
+# build output
+android/app/build
+ios/build
+
+# IDEs and editors
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.bak
+
+# Logs and databases
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs
+*.log
+*.sqlite
+*.sqlite3
+*.db
+
+# OS generated files
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Project-specific
+# Metro Bundler cache directory
+/metro-cache
+# Metro Bundler workspace settings
+*.rnx
+
+# Misc
+*.md
+*.json
+*.iml
