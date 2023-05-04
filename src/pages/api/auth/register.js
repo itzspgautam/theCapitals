@@ -1,4 +1,4 @@
-import DbConnect from "@/config/Databse";
+import DbConnect from "@/config/databse";
 import { firebaseAuth } from "@/middleware/isFirebaseAuth";
 import User from "@/models/User";
 import { generateToken } from "@/utils/Token";
