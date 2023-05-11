@@ -1,22 +1,25 @@
 import DbConnect from "@/config/databse";
 import { mainAuth } from "@/middleware/isMainAuth";
-import PayDetails from "@/models/PayDetails";
+import DeviceToken from "@/models/DeviceToken";
+import { sendNotification } from "@/utils/Notification/index.js";
 
 const handler = async (req, res) => {
   const { user } = req.auth;
   if (req.method === "POST") {
     try {
       await DbConnect();
+      const { receiverId, title, body, save } = req.body;
 
-      const paymentDetails = await PayDetails.find({ user: user._id }).sort({
-        updatedAt: -1,
+      const send = await sendNotification({
+        receiverId,
+        title,
+        body,
+        save,
       });
-
-      res.status(201).json({ success: true, paymentDetails });
+      return res.status(201).json({ success: true, status: send });
     } catch (error) {
-      console.log(error);
       res.status(500).json({
-        sussess: false,
+        success: false,
         error: error.message,
       });
     }

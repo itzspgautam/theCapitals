@@ -1,20 +1,21 @@
 import DbConnect from "@/config/databse";
 import { mainAuth } from "@/middleware/isMainAuth";
-import PayDetails from "@/models/PayDetails";
+import Refer from "@/models/Refer";
+import User from "@/models/User";
 
 const handler = async (req, res) => {
   const { user } = req.auth;
   if (req.method === "POST") {
     try {
       await DbConnect();
+      console.log(user._id);
+      const myReferals = await Refer.find({ referId: user._id }).populate(
+        "user"
+      );
 
-      const paymentDetails = await PayDetails.find({ user: user._id }).sort({
-        updatedAt: -1,
-      });
-
-      res.status(201).json({ success: true, paymentDetails });
+      return res.status(200).json({ success: true, myReferals });
     } catch (error) {
-      console.log(error);
+      console.log("error");
       res.status(500).json({
         sussess: false,
         error: error.message,

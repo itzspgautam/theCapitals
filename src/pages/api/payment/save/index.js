@@ -1,13 +1,16 @@
 import DbConnect from "@/config/databse";
 import { mainAuth } from "@/middleware/isMainAuth";
 import Investment from "@/models/Investment";
+import Refer from "@/models/Refer";
 import Transaction from "@/models/Transaction";
+import { sendNotification } from "@/utils/Notification/index.js";
 import { getOrderById } from "@/utils/Razorpay/Order";
 import { getPaymentById } from "@/utils/Razorpay/Payment";
 import { verifyRzpPayment } from "@/utils/VerifyRzpPayment";
 
 const handler = async (req, res) => {
   const { method } = req;
+  const { user } = req.auth;
   switch (method) {
     case "POST":
       try {
@@ -65,6 +68,31 @@ const handler = async (req, res) => {
         investment.status = "success";
         investment.transactions.push(transaction._id);
         await investment.save();
+
+        //Handle referal-<if user invested first time then reward referal
+        const totalInvest = await Investment.find({ investor: user?._id });
+        if (totalInvest.length === 1) {
+          const referal = await Refer.findOne({ user: user._id });
+          if (referal) {
+            referal.status = "rewarded";
+            await referal.save();
+            //send reward referal
+            await sendNotification({
+              receiverId: referal.referId,
+              title: "Congratulations!",
+              body: "You have successfully referred a friend and earned a reward!",
+              save: true,
+            });
+          }
+
+          //congratulate customer
+          await sendNotification({
+            receiverId: user._id,
+            title: "Congratulations on Your Investment!",
+            body: "Your investment has been successfully processed. Thank you for investing in our platform and choosing us as your partner in achieving your financial goals.",
+            save: true,
+          });
+        }
 
         return res.status(201).json({
           success: true,
