@@ -91,7 +91,7 @@ const loginWithPhone = (phoneNumber, appVerifier) => async (dispatch) => {
 const isPhoneAlreadyRegistered = (phone) => async (dispatch) => {
   try {
     const { data } = await axios.post(
-      `${AppConfig.API_ENDPOINT}api/auth/phone`,
+      `${AppConfig.API_ENDPOINT}/api/auth/phone`,
       {
         phone: `+${phone}`,
       }
@@ -244,7 +244,7 @@ const registerUser = (userData, navigation) => async (dispatch) => {
     let token = FirebaseAuth.currentUser.accessToken;
     console.log(token);
     const registerUser = await axios.post(
-      `${AppConfig.API_ENDPOINT}api/auth/register`,
+      `${AppConfig.API_ENDPOINT}/api/auth/register`,
       userData,
       {
         headers: {
@@ -276,7 +276,7 @@ const loginUser = () => async (dispatch) => {
   try {
     let token = await FirebaseAuth.currentUser.accessToken;
     const loginUser = await axios.post(
-      `${AppConfig.API_ENDPOINT}api/auth/login`,
+      `${AppConfig.API_ENDPOINT}/api/auth/login`,
       {},
       {
         headers: {
