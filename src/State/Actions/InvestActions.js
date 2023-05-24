@@ -356,7 +356,7 @@ const clearError = () => async (dispatch) => {
   dispatch({ type: types.INVEST_CLEAR_ERROR });
 };
 
-export default {
+const InvestActions = {
   types,
   createInvest,
   saveInvestmentAndPay,
@@ -366,3 +366,4 @@ export default {
   getWithdrawInfo,
   requestWithdraw,
 };
+export default InvestActions;

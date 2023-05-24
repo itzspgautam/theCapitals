@@ -336,7 +336,7 @@ const clearError = () => async (dispatch) => {
   dispatch({ type: types.AUTH_CLEAR_ERROR });
 };
 
-export default {
+const AuthActions = {
   types,
   loginWithPhone,
   verifyPhone,
@@ -346,3 +346,5 @@ export default {
   setAuth,
   signOut,
 };
+
+export default AuthActions;

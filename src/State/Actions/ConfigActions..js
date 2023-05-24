@@ -22,5 +22,5 @@ const getConfig = () => async (dispatch) => {
     return false;
   }
 };
-
-export default { types, getConfig };
+const ConfigActions = { types, getConfig };
+export default ConfigActions;

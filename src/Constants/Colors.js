@@ -1,4 +1,4 @@
-export default {
+const Colors = {
   PRIMARY: {
     100: "#80CBC4",
     200: "#4DB6AC",
@@ -109,3 +109,4 @@ export default {
     GOOGLE: "#DB4437",
   },
 };
+export default Colors;

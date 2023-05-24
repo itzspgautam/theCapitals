@@ -52,7 +52,7 @@ const TextInfo = (props) => {
   );
 };
 
-const index = () => {
+const Index = () => {
   const dispatch = useDispatch();
   const toast = useToast();
 
@@ -88,7 +88,7 @@ const index = () => {
   const payAndInvest = async () => {
     const investData = {
       amount,
-      duration:duration*12,
+      duration: duration * 12,
       paymentType,
       intrest:
         paymentType === "full"
@@ -131,8 +131,9 @@ const index = () => {
                     pointerEvents="none"
                     color="gray.300"
                     fontSize="1.2em"
-                    children="₹"
-                  />
+                  >
+                    ₹
+                  </InputLeftElement>
                   <Input
                     placeholder="Enter amount"
                     value={amount}
@@ -146,7 +147,7 @@ const index = () => {
                     onChange={(e) => setDuration(e.target.value)}
                   >
                     {months.map((y) => (
-                      <option>{y}</option>
+                      <option key={y}>{y}</option>
                     ))}
                   </Select>
                 </InputGroup>
@@ -358,4 +359,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

@@ -43,5 +43,5 @@ const setAppLoading = (isLoading) => async (dispatch) => {
     payload: isLoading,
   });
 };
-
-export default { types, appStart, setAppLoading };
+const GeneralActions = { types, appStart, setAppLoading };
+export default GeneralActions;
