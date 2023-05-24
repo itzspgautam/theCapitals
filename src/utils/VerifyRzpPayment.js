@@ -1,5 +1,4 @@
-import RazorpayConfig from "@/config/razorpay";
-
+import RazorpayConfig from "@/Config/razorpay";
 export const verifyRzpPayment = async (paymentId, paymentRef) => {
   try {
     const order = await RazorpayConfig.orders.fetch(paymentRef);

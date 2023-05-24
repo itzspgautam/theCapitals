@@ -1,4 +1,4 @@
-const admin = require("@/Config/firebaseAdmin");
+const admin = require("@/Config/FirebaseApp");
 const { default: DeviceToken } = require("@/models/DeviceToken");
 const { default: Notification } = require("@/models/Notification");
 
