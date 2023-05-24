@@ -1,4 +1,4 @@
-import admin from "@/Config/FirebaseAdmin";
+const admin = require("@/Config/firebaseAdmin");
 
 export function firebaseAuth(handler) {
   return async (req, res) => {
