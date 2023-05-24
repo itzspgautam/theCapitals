@@ -1,6 +1,6 @@
 import User from "@/models/User";
 
-const admin = require("@/Config/FirebaseAdmin");
+const admin = require("@/Config/firebaseAdmin");
 
 export function withAuth(handler) {
   return async (req, res) => {
